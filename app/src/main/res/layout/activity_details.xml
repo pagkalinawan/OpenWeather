@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5">
+
+    <TextView
+        android:id="@+id/tvCityName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="44sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/cardPrimary"
+        app:layout_constraintTop_toTopOf="parent"
+        tool:text="Makati" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.2" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="12dp"
+        app:cardCornerRadius="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/cardSecondary"
+        app:layout_constraintTop_toBottomOf="@+id/glHorizontal">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvCityTemp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="38sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/tvCityTempMain"
+                app:layout_constraintTop_toTopOf="parent"
+                tool:text="30" />
+
+            <TextView
+                android:id="@+id/tvCityTempMain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="22sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tool:text="Cloudy" />
+
+            <TextView
+                android:id="@+id/tvCityTempDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvCityTempMain"
+                tool:text="broken" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardSecondary"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="12dp"
+        app:cardCornerRadius="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHeight_percent="0.4">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="12dp">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/glCardVertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/glCardHorizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.4" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/glCardHorizontalBottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.75" />
+
+            <TextView
+                android:id="@+id/tvCountry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:text="Country:"
+                android:visibility="gone"
+                app:layout_constraintBottom_toTopOf="@+id/tvLong"
+                app:layout_constraintEnd_toEndOf="@+id/glCardVertical"
+                tool:visibility="visible" />
+
+            <TextView
+                android:id="@+id/tvLong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:text="Longitude:"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/glCardHorizontal"
+                app:layout_constraintEnd_toEndOf="@+id/glCardVertical"
+                app:layout_constraintTop_toTopOf="parent"
+                tool:visibility="visible" />
+
+            <TextView
+                android:id="@+id/tvLat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:text="Latitude:"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@+id/glCardVertical"
+                app:layout_constraintTop_toBottomOf="@id/tvLong"
+                tool:visibility="visible" />
+
+            <TextView
+                android:id="@+id/tvCountryValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/tvLongValue"
+                app:layout_constraintStart_toStartOf="@+id/glCardVertical" />
+
+            <TextView
+                android:id="@+id/tvLongValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/glCardHorizontal"
+                app:layout_constraintStart_toStartOf="@+id/glCardVertical"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvLatValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/glCardVertical"
+                app:layout_constraintTop_toBottomOf="@id/tvLongValue" />
+
+            <TextView
+                android:id="@+id/tvMinTempValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/glCardHorizontalBottom"
+                app:layout_constraintEnd_toEndOf="@+id/glCardVertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/glCardHorizontal" />
+
+            <TextView
+                android:id="@+id/tvMinTemp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Min Temp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@+id/glCardVertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvMinTempValue"
+                tool:visibility="visible" />
+
+            <TextView
+                android:id="@+id/tvMaxTempValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/glCardVertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/glCardHorizontalBottom" />
+
+            <TextView
+                android:id="@+id/tvMaxTemp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Max Temp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@+id/glCardVertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvMaxTempValue"
+                tool:visibility="visible" />
+
+            <TextView
+                android:id="@+id/tvPressureValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/glCardHorizontalBottom"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/glCardVertical"
+                app:layout_constraintTop_toBottomOf="@+id/glCardHorizontal" />
+
+            <TextView
+                android:id="@+id/tvPressure"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pressure"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/glCardVertical"
+                app:layout_constraintTop_toBottomOf="@+id/tvPressureValue"
+                tool:visibility="visible" />
+
+            <TextView
+                android:id="@+id/tvHumidityValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/glCardVertical"
+                app:layout_constraintTop_toBottomOf="@+id/glCardHorizontalBottom" />
+
+            <TextView
+                android:id="@+id/tvHumidity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Humidity"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/glCardVertical"
+                app:layout_constraintTop_toBottomOf="@+id/tvHumidityValue"
+                tool:visibility="visible" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
