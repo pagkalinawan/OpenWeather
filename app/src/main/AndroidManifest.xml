@@ -14,7 +14,7 @@
         android:theme="@style/Theme.OpenWeather"
         tools:targetApi="31">
         <activity
-            android:name=".view.MainActivity"
+            android:name=".presentation.view.MainActivity"
             android:exported="true"
             android:label="@string/app_name">
             <intent-filter>
@@ -23,7 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.DetailsActivity"/>
+        <activity android:name=".presentation.view.DetailsActivity"/>
     </application>
 
 </manifest>

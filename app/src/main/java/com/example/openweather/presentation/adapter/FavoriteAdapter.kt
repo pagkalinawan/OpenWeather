@@ -1,4 +1,4 @@
-package com.example.openweather.adapter
+package com.example.openweather.presentation.adapter
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -8,7 +8,7 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.openweather.R
 import com.example.openweather.utils.Constants.KEY_CITY_NAME
-import com.example.openweather.view.DetailsActivity
+import com.example.openweather.presentation.view.DetailsActivity
 
 class FavoriteAdapter(private val cityList: List<String>) :
     RecyclerView.Adapter<FavoriteViewHolder>() {

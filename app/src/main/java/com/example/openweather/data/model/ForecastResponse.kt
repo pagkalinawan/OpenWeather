@@ -1,4 +1,4 @@
-package com.example.openweather.model
+package com.example.openweather.data.model
 
 data class ForecastResponse(
     val cnt: Int,

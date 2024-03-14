@@ -1,4 +1,4 @@
-package com.example.openweather.view
+package com.example.openweather.presentation.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.openweather.adapter.FavoriteAdapter
+import com.example.openweather.presentation.adapter.FavoriteAdapter
 import com.example.openweather.databinding.FragmentFavoriteBinding
 
 class FavoriteFragment : Fragment() {

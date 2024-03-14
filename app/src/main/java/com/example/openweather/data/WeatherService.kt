@@ -1,7 +1,7 @@
-package com.example.openweather.utils
+package com.example.openweather.data
 
-import com.example.openweather.model.ForecastResponse
-import com.example.openweather.model.WeatherResponse
+import com.example.openweather.data.model.ForecastResponse
+import com.example.openweather.data.model.WeatherResponse
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.EntryPoint

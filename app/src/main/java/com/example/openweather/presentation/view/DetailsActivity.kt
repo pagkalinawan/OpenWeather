@@ -1,19 +1,21 @@
-package com.example.openweather.view
+package com.example.openweather.presentation.view
 
 import android.os.Bundle
 import android.view.MenuItem
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import androidx.lifecycle.ViewModelProvider
+import com.example.openweather.data.NetworkModule
+import com.example.openweather.data.WeatherRepository
 import com.example.openweather.databinding.ActivityDetailsBinding
+import com.example.openweather.domain.GetWeatherDetailsUseCase
 import com.example.openweather.utils.Constants
-import com.example.openweather.viewmodel.DetailsViewModel
-import dagger.hilt.android.AndroidEntryPoint
+import com.example.openweather.presentation.viewmodel.DetailsViewModel
 
 class DetailsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailsBinding
-    private val viewModel: DetailsViewModel by viewModels()
+    private lateinit var viewModel: DetailsViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,31 +24,31 @@ class DetailsActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        val cityName = intent.getStringExtra(Constants.KEY_CITY_NAME)
-        if (cityName != null) {
-            viewModel.getForecast(cityName)
-        }
+        val weatherRepository = WeatherRepository(NetworkModule.weatherService)
+        val getWeatherDetailsUseCase = GetWeatherDetailsUseCase(weatherRepository)
+        viewModel = DetailsViewModel(getWeatherDetailsUseCase)
 
         setupObserver()
+        val cityName = intent.getStringExtra(Constants.KEY_CITY_NAME)
+        if (cityName != null) {
+            viewModel.getWeatherDetails(cityName)
+        }
+
     }
 
     private fun setupObserver() {
-        viewModel.weatherResponseLiveData.observe(this) { response ->
-            "${response.main.temp}°".also { binding.tvCityTemp.text = it }
-            binding.tvLongValue.text = response.coord.lon.toString()
-            binding.tvLatValue.text = response.coord.lat.toString()
-            binding.tvCountryValue.text = response.sys.country
-            binding.tvCityName.text = response.name
-
-            response.weather.first().let {
-                binding.tvCityTempMain.text = it.main
-                binding.tvCityTempDescription.text = it.description
-            }
-
-            binding.tvMinTempValue.text = response.main.temp_min.toString()
-            binding.tvMaxTempValue.text = response.main.temp_max.toString()
-            binding.tvPressureValue.text = response.main.pressure.toString()
-            binding.tvHumidityValue.text = response.main.humidity.toString()
+        viewModel.weatherDetails.observe(this) { data ->
+            "${data.temperature}°".also { binding.tvCityTemp.text = it }
+            binding.tvLongValue.text = data.long
+            binding.tvLatValue.text = data.lat
+            binding.tvCityTempMain.text = data.tempMain
+            binding.tvCityTempDescription.text = data.weatherDescription
+            binding.tvCountryValue.text = data.country
+            binding.tvCityName.text = data.cityName
+            binding.tvMinTempValue.text = data.tempMin
+            binding.tvMaxTempValue.text = data.tempMax
+            binding.tvPressureValue.text = data.pressure.toString()
+            binding.tvHumidityValue.text = data.humidity.toString()
             setViewVisible()
         }
     }
