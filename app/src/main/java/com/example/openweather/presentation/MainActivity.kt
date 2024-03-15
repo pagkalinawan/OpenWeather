@@ -1,4 +1,4 @@
-package com.example.openweather.presentation.view
+package com.example.openweather.presentation
 
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView

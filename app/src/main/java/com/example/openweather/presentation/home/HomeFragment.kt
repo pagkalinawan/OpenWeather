@@ -1,4 +1,4 @@
-package com.example.openweather.presentation.view
+package com.example.openweather.presentation.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,6 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.openweather.databinding.FragmentHomeBinding
-import com.example.openweather.presentation.viewmodel.HomeViewModel
 
 class HomeFragment : Fragment() {
 

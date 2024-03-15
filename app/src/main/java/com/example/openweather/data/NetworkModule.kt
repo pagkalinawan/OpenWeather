@@ -6,7 +6,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object NetworkModule {
-
     private val loggingInterceptor = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BODY
     }
@@ -16,7 +15,6 @@ object NetworkModule {
         .addConverterFactory(GsonConverterFactory.create())
         .client(httpClient)
         .build()
-
 
     val weatherService: WeatherService = retrofit.create(WeatherService::class.java)
 }

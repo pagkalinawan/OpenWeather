@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.openweather.presentation.view.HomeFragment"
+        android:name="com.example.openweather.presentation.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.example.openweather.presentation.view.FavoriteFragment"
+        android:name="com.example.openweather.presentation.favorite.FavoriteFragment"
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_favorite" />
 
     <activity
         android:id="@+id/navigation_details"
-        android:name="com.example.openweather.presentation.view.DetailsActivity"
+        android:name="com.example.openweather.presentation.weather_details.DetailsActivity"
         android:label="@string/title_notifications"
         tools:layout="@layout/activity_details" />
 </navigation>

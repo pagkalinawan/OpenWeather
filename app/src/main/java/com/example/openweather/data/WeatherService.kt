@@ -14,7 +14,6 @@ import retrofit2.http.Query
 import javax.inject.Singleton
 
 interface WeatherService {
-
     @GET("forecast")
     suspend fun getForecastByCityName (
         @Query("q") cityName: String,

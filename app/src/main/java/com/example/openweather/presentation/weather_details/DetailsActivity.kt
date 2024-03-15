@@ -1,16 +1,18 @@
-package com.example.openweather.presentation.view
+package com.example.openweather.presentation.weather_details
 
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.example.openweather.data.NetworkModule
 import com.example.openweather.data.WeatherRepository
 import com.example.openweather.databinding.ActivityDetailsBinding
 import com.example.openweather.domain.GetWeatherDetailsUseCase
 import com.example.openweather.utils.Constants
-import com.example.openweather.presentation.viewmodel.DetailsViewModel
+import kotlinx.coroutines.launch
 
 class DetailsActivity : AppCompatActivity() {
 
@@ -33,23 +35,28 @@ class DetailsActivity : AppCompatActivity() {
         if (cityName != null) {
             viewModel.getWeatherDetails(cityName)
         }
-
     }
 
     private fun setupObserver() {
-        viewModel.weatherDetails.observe(this) { data ->
-            "${data.temperature}°".also { binding.tvCityTemp.text = it }
-            binding.tvLongValue.text = data.long
-            binding.tvLatValue.text = data.lat
-            binding.tvCityTempMain.text = data.tempMain
-            binding.tvCityTempDescription.text = data.weatherDescription
-            binding.tvCountryValue.text = data.country
-            binding.tvCityName.text = data.cityName
-            binding.tvMinTempValue.text = data.tempMin
-            binding.tvMaxTempValue.text = data.tempMax
-            binding.tvPressureValue.text = data.pressure.toString()
-            binding.tvHumidityValue.text = data.humidity.toString()
-            setViewVisible()
+        lifecycleScope.launch {
+            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.weatherDetails.collect { weatherDetails ->
+                    weatherDetails.let { data ->
+                        "${data?.temperature}°".also { binding.tvCityTemp.text = it }
+                        binding.tvLongValue.text = data?.long
+                        binding.tvLatValue.text = data?.lat
+                        binding.tvCityTempMain.text = data?.tempMain
+                        binding.tvCityTempDescription.text = data?.weatherDescription
+                        binding.tvCountryValue.text = data?.country
+                        binding.tvCityName.text = data?.cityName
+                        binding.tvMinTempValue.text = data?.tempMin
+                        binding.tvMaxTempValue.text = data?.tempMax
+                        binding.tvPressureValue.text = data?.pressure.toString()
+                        binding.tvHumidityValue.text = data?.humidity.toString()
+                        setViewVisible()
+                    }
+                }
+            }
         }
     }
 
